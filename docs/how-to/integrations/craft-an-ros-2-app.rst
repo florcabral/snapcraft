@@ -7,7 +7,7 @@ This how-to guide covers the steps, decisions, and implementation details that a
 unique when crafting a `ROS 2 <https://index.ros.org/doc/ros2>`_-based snap. We'll work
 through the aspects unique to ROS 2 apps by examining an existing project.
 
-There are four supported bases for ROS 2 -- core24, core22, core20, and core18.
+There are five supported bases for ROS 2 -- core26, core24, core22, core20, and core18.
 
 
 .. _how-to-craft-an-ros-2-app-project-files:
@@ -145,6 +145,37 @@ Example project file for ROS 2 Talker/Listener
                     command: ros2 launch demo_nodes_cpp talker_listener.launch.py
                     extensions: [ros2-jazzy]
 
+    .. group-tab:: core26
+
+        The following code comprises the project file for the `core26 version of ROS 2
+        Talker/Listener <https://github.com/snapcraft-docs/ros2-talker-listener-core20>`_.
+
+        .. collapse:: Code
+
+            .. code-block:: yaml
+                :caption: snapcraft.yaml
+
+                name: ros2-talker-listener
+                version: '0.1'
+                summary: ROS 2 Talker/Listener Example
+                description: |
+                  This example launches a ROS 2 talker and listener.
+
+                confinement: devmode
+                base: core26
+
+                parts:
+                  ros-demos:
+                    plugin: colcon
+                    source: https://github.com/ros2/demos.git
+                    source-branch: lyrical
+                    source-subdir: demo_nodes_cpp
+                    stage-packages: [ros-lyrical-ros2launch]
+
+                apps:
+                  ros2-talker-listener:
+                    command: ros2 launch demo_nodes_cpp talker_listener.launch.py
+                    extensions: [ros2-lyrical]
 
 Add an ROS 2 app
 ----------------
@@ -170,6 +201,8 @@ To add an ROS 2 app:
         - :ref:`ros2-humble <reference-ros-2-extensions>`
       * - core24
         - :ref:`ros2-jazzy <reference-ros-2-extensions>`
+      * - core26
+        - :ref:`ros2-lyrical <reference-ros-2-extensions>`
 
 
 Add a part written for ROS 2
@@ -203,6 +236,8 @@ To add an ROS 2 part:
         - ros-humble-ros2launch
       * - core24
         - ros-jazzy-ros2launch
+      * - core26
+        - ros-lyrical-ros2launch
 
 
 Handle build issues
@@ -221,7 +256,7 @@ false positives. These libraries are build time dependencies only.
 Share content between ROS 2 snaps
 ---------------------------------
 
-The core20, core22 and core24 bases also offer the option to build your ROS snap using
+The core20, core22, core24 and core26 bases also offer the option to build your ROS snap using
 the `content-sharing interface <https://snapcraft.io/docs/content-interface>`_. It
 shares the ROS 2 content packages across multiple snaps, saving space and ensuring
 package consistency throughout your snap build environment.
@@ -277,6 +312,20 @@ difference in the project file when content sharing is enabled:
             -   extensions: [ros2-jazzy]
             +   extensions: [ros2-jazzy-ros-base]
 
+    .. group-tab:: core26
+
+        .. code-block:: diff
+            :caption: snapcraft.yaml
+
+            source-subdir: demo_nodes_cpp
+            -  stage-packages: [ros-lyrical-ros2launch]
+
+            apps:
+              ros2-talker-listener:
+                command: ros2 launch demo_nodes_cpp talker_listener.launch.py
+            -   extensions: [ros2-lyrical]
+            +   extensions: [ros2-lyrical-ros-base]
+
 To turn on content sharing:
 
 #. Remove the ``stage-packages`` key from the part. The package is already available in
@@ -295,6 +344,8 @@ To turn on content sharing:
         - :ref:`ros2-humble-ros-base <reference-ros-2-content-extensions>`
       * - core24
         - :ref:`ros2-jazzy-ros-base <reference-ros-2-content-extensions>`
+      * - core26
+        - :ref:`ros2-lyrical-ros-base <reference-ros-2-content-extensions>`
 
 
 Because the snap makes use of the content provided by another snap, you must connect
