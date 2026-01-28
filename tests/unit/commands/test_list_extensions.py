@@ -79,7 +79,11 @@ def test_command(emitter, command, fake_app_config):
         ros2-jazzy              core24
         ros2-jazzy-desktop      core24
         ros2-jazzy-ros-base     core24
-        ros2-jazzy-ros-core     core24"""
+        ros2-jazzy-ros-core     core24
+        ros2-lyrical            core26
+        ros2-lyrical-desktop    core26
+        ros2-lyrical-ros-base   core26
+        ros2-lyrical-ros-core   core26"""
         )
     )
 
@@ -132,6 +136,10 @@ def test_command_extension_dups(emitter, command, fake_app_config):
         ros2-jazzy              core24
         ros2-jazzy-desktop      core24
         ros2-jazzy-ros-base     core24
-        ros2-jazzy-ros-core     core24"""
+        ros2-jazzy-ros-core     core24
+        ros2-lyrical            core26
+        ros2-lyrical-desktop    core26
+        ros2-lyrical-ros-base   core26
+        ros2-lyrical-ros-core   core26"""
         )
     )
