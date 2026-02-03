@@ -1,6 +1,6 @@
 # -*- Mode:Python; indent-tabs-mode:nil; tab-width:4 -*-
 #
-# Copyright 2024 Canonical Ltd.
+# Copyright 2026 Canonical Ltd.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3 as
@@ -42,7 +42,7 @@ class ROS2LyricalExtension(Extension):
     @staticmethod
     @overrides
     def is_experimental(base: str | None) -> bool:
-        return False
+        return True
 
     @overrides
     def get_root_snippet(self) -> dict[str, Any]:
