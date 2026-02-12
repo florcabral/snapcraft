@@ -72,7 +72,7 @@ The extension adds its own part to the project, which pulls in the ROS 2 build p
                 :caption: snapcraft.yaml
 
                 ros2-humble/ros2-launch:
-                  source: /snap/snapcraft/13181/share/snapcraft/extensions/ros2
+                  source: /snap/snapcraft/current/share/snapcraft/extensions/ros2
                   plugin: make
                   build-packages:
                     - ros-humble-ros-environment
@@ -88,7 +88,7 @@ The extension adds its own part to the project, which pulls in the ROS 2 build p
                 :caption: snapcraft.yaml
 
                 ros2-jazzy/ros2-launch:
-                  source: /snap/snapcraft/13181/share/snapcraft/extensions/ros2
+                  source: /snap/snapcraft/current/share/snapcraft/extensions/ros2
                   plugin: make
                   build-packages:
                     - ros-jazzy-ros-environment
@@ -104,7 +104,7 @@ The extension adds its own part to the project, which pulls in the ROS 2 build p
                 :caption: snapcraft.yaml
 
                 ros2-lyrical/ros2-launch:
-                  source: /snap/snapcraft/13181/share/snapcraft/extensions/ros2
+                  source: /snap/snapcraft/current/share/snapcraft/extensions/ros2
                   plugin: make
                   build-packages:
                     - ros-lyrical-ros-environment
