@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Import types and tell flake8 to ignore the "unused" List.
-
 """Base for ROS 2 Lyrical extensions to the Colcon plugin using content-sharing."""
 
 import dataclasses
