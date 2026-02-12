@@ -20,7 +20,7 @@ Example project file for ROS 2 Talker/Listener
 
     .. tab-item:: core18
 
-        The following code comprises the snapcraft.yaml file for the core18 version
+        The following code comprises the `snapcraft.yaml` file for the core18 version
         of a ROS 2 Talker/Listener.
 
         .. dropdown:: Code
@@ -53,8 +53,8 @@ Example project file for ROS 2 Talker/Listener
     .. tab-item:: core20
         :sync: core20
 
-        The following code comprises the project file for the core20 version of ROS 2
-        Talker/Listener.
+        The following code comprises the `snapcraft.yaml` file for the core20 version
+        of a ROS 2 Talker/Listener.
 
         .. dropdown:: Code
 
@@ -86,7 +86,7 @@ Example project file for ROS 2 Talker/Listener
     .. tab-item:: core22
         :sync: core22
 
-        The following code comprises the snapcraft.yaml file for the core22 version
+        The following code comprises the `snapcraft.yaml` file for the core22 version
         of a ROS 2 Talker/Listener.
 
         .. dropdown:: Code
@@ -119,7 +119,7 @@ Example project file for ROS 2 Talker/Listener
     .. tab-item:: core24
         :sync: core24
 
-        The following code comprises the snapcraft.yaml file for the core24 version
+        The following code comprises the `snapcraft.yaml` file for the core24 version
         of a ROS 2 Talker/Listener.
 
         .. dropdown:: Code
@@ -151,7 +151,7 @@ Example project file for ROS 2 Talker/Listener
 
     .. group-tab:: core26
 
-        The following code comprises the snapcraft.yaml file for the core26 version
+        The following code comprises the `snapcraft.yaml` file for the core26 version
         of a ROS 2 Talker/Listener.
 
         .. collapse:: Code
@@ -181,7 +181,7 @@ Example project file for ROS 2 Talker/Listener
                     command: ros2 launch demo_nodes_cpp talker_listener.launch.py
                     extensions: [ros2-lyrical]
 
-Add an ROS 2 app
+Add a ROS 2 app
 ----------------
 
 ROS 2 apps depend on special extensions that initialize the build- and run-time
