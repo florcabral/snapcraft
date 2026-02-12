@@ -21,7 +21,7 @@
 +      - ROS_VERSION: "2"
 +      - ROS_DISTRO: lyrical
 +  ros2-lyrical/ros2-launch:
-+    source: /snap/snapcraft/13181/share/snapcraft/extensions/ros2
++    source: /snap/snapcraft/current/share/snapcraft/extensions/ros2
 +    plugin: make
 +    build-packages:
 +      - ros-lyrical-ros-environment
