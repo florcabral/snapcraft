@@ -19,8 +19,8 @@ Example project file for ROS 2 Talker/Listener
 
     .. group-tab:: core18
 
-        The following code comprises the project file for the `core18 version of ROS 2
-        Talker/Listener <https://github.com/snapcraft-docs/ros2-talker-listener>`_.
+        The following code comprises the snapcraft.yaml file for the core18 version
+        of a ROS 2 Talker/Listener.
 
         .. collapse:: Code
 
@@ -51,8 +51,8 @@ Example project file for ROS 2 Talker/Listener
 
     .. group-tab:: core20
 
-        The following code comprises the project file for the `core20 version of ROS 2
-        Talker/Listener <https://github.com/snapcraft-docs/ros2-talker-listener-core20>`_.
+        The following code comprises the project file for the core20 version of ROS 2
+        Talker/Listener.
 
         .. collapse:: Code
 
@@ -83,8 +83,8 @@ Example project file for ROS 2 Talker/Listener
 
     .. group-tab:: core22
 
-        The following code comprises the project file for the `core22 version of ROS 2
-        Talker/Listener <https://github.com/snapcraft-docs/ros2-talker-listener-core22>`_.
+        The following code comprises the snapcraft.yaml file for the core22 version
+        of a ROS 2 Talker/Listener.
 
         .. collapse:: Code
 
@@ -115,8 +115,8 @@ Example project file for ROS 2 Talker/Listener
 
     .. group-tab:: core24
 
-        The following code comprises the project file for the `core24 version of ROS 2
-        Talker/Listener <https://github.com/snapcraft-docs/ros2-talker-listener-core20>`_.
+        The following code comprises the snapcraft.yaml file for the core24 version
+        of a ROS 2 Talker/Listener.
 
         .. collapse:: Code
 
@@ -147,8 +147,8 @@ Example project file for ROS 2 Talker/Listener
 
     .. group-tab:: core26
 
-        The following code comprises the project file for the `core26 version of ROS 2
-        Talker/Listener <https://github.com/snapcraft-docs/ros2-talker-listener-core20>`_.
+        The following code comprises the snapcraft.yaml file for the core26 version
+        of a ROS 2 Talker/Listener.
 
         .. collapse:: Code
 
