@@ -35,7 +35,7 @@ prepare: |
   set_base "$SNAP_DIR/snap/snapcraft.yaml"
 
   # Overwrite the core version
-  sed -i "s|core22|core24|" "$SNAP_DIR/snap/snapcraft.yaml"
+  sed -i "s|core22|core26|" "$SNAP_DIR/snap/snapcraft.yaml"
 
   # Overwrite the extension to test them all out of a single snap
   sed -i "s|ros2-humble|${EXTENSION}|" "$SNAP_DIR/snap/snapcraft.yaml"
