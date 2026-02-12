@@ -75,7 +75,7 @@ class TestExtensionROS2LyricalMetaExtensions:
     @pytest.mark.parametrize(fixture_variables, fixture_values)
     def test_get_supported_bases(self, extension_name, extension_class, meta, meta_dev):
         extension = setup_method_fixture(extension_class)
-        assert extension.get_supported_bases() == ("core24",)
+        assert extension.get_supported_bases() == ("core26",)
 
     @pytest.mark.parametrize(fixture_variables, fixture_values)
     def test_get_supported_confinement(
