@@ -2,7 +2,7 @@ name: ros2-lyrical-hello
 version: "1.0"
 summary: hello world
 description: |
-  A ROS 2 rlcpp-based workspace.
+  A ROS 2 rclcpp-based workspace.
 
 base: core26
 build-base: devel
