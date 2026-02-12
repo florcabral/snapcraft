@@ -7,7 +7,7 @@ ROS 2 extensions
 The ROS 2 extensions, helps fill in common settings for software built with the  `ROS 2
 <https://ros.org>`_ libraries.
 
-There are three extensions in this family, each for a different version of ROS 2.
+There are four extensions in this family, each for a different version of ROS 2.
 
 .. list-table::
 
@@ -38,7 +38,11 @@ There are three extensions in this family, each for a different version of ROS 2
 
         :ref:`Experimental extensions enabled <how-to-enable-experimental-extensions>`
 
+<<<<<<< HEAD
 All three extensions require Snapcraft 7.3 or higher.
+=======
+All four extensions require Snapcraft 7.3 or higiher.
+>>>>>>> d0fabc975 (adjust tests, fix docs)
 
 
 Included parts

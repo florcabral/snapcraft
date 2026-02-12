@@ -58,7 +58,7 @@ class TestExtensionROS2LyricalExtension:
 
     def test_is_experimental(self, setup_method_fixture):
         extension = setup_method_fixture()
-        assert not extension.is_experimental(None)
+        assert extension.is_experimental(None)
 
     def test_get_supported_bases(self, setup_method_fixture):
         extension = setup_method_fixture()
