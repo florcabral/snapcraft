@@ -19,37 +19,37 @@ import pytest
 from snapcraft import errors
 from snapcraft.extensions import registry
 from snapcraft.extensions.extension import get_extensions_data_dir
-from snapcraft.extensions.ros2_jazzy_desktop import ROS2JazzyDesktopExtension
-from snapcraft.extensions.ros2_jazzy_ros_base import ROS2JazzyRosBaseExtension
-from snapcraft.extensions.ros2_jazzy_ros_core import ROS2JazzyRosCoreExtension
+from snapcraft.extensions.ros2_lyrical_desktop import ROS2LyricalDesktopExtension
+from snapcraft.extensions.ros2_lyrical_ros_base import ROS2LyricalRosBaseExtension
+from snapcraft.extensions.ros2_lyrical_ros_core import ROS2LyricalRosCoreExtension
 
 
 def setup_method_fixture(extension, yaml_data=None, arch=None, target_arch=None):
     return extension(yaml_data=yaml_data, arch=arch, target_arch=target_arch)
 
 
-class TestExtensionROS2JazzyMetaExtensions:
-    """ROS 2 Jazzy meta extensions tests."""
+class TestExtensionROS2LyricalMetaExtensions:
+    """ROS 2 Lyrical meta extensions tests."""
 
     fixture_variables = "extension_name,extension_class,meta,meta_dev"
     fixture_values = [
         (
-            "ros2-jazzy-desktop",
-            ROS2JazzyDesktopExtension,
-            "ros-jazzy-desktop",
-            "ros-jazzy-desktop-dev",
+            "ros2-lyrical-desktop",
+            ROS2LyricalDesktopExtension,
+            "ros-lyrical-desktop",
+            "ros-lyrical-desktop-dev",
         ),
         (
-            "ros2-jazzy-ros-base",
-            ROS2JazzyRosBaseExtension,
-            "ros-jazzy-ros-base",
-            "ros-jazzy-ros-base-dev",
+            "ros2-lyrical-ros-base",
+            ROS2LyricalRosBaseExtension,
+            "ros-lyrical-ros-base",
+            "ros-lyrical-ros-base-dev",
         ),
         (
-            "ros2-jazzy-ros-core",
-            ROS2JazzyRosCoreExtension,
-            "ros-jazzy-ros-core",
-            "ros-jazzy-ros-core-dev",
+            "ros2-lyrical-ros-core",
+            ROS2LyricalRosCoreExtension,
+            "ros-lyrical-ros-core",
+            "ros-lyrical-ros-core-dev",
         ),
     ]
 
@@ -96,7 +96,7 @@ class TestExtensionROS2JazzyMetaExtensions:
                     "formats": ["deb"],
                     "key-id": "C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654",
                     "key-server": "keyserver.ubuntu.com",
-                    "suites": ["noble"],
+                    "suites": ["resolute"],
                 }
             ],
             "lint": {
@@ -115,7 +115,7 @@ class TestExtensionROS2JazzyMetaExtensions:
                             "usr/lib/*libicuio.so*",
                             "usr/lib/*libicutest.so*",
                             "usr/lib/*libicutu.so*",
-                            "usr/lib/*libpython3.10.so*",
+                            "usr/lib/*libpython3.14.so*",
                             "usr/lib/*libspdlog.so*",
                             "usr/lib/*libtinyxml2.so*",
                         ]
@@ -135,10 +135,10 @@ class TestExtensionROS2JazzyMetaExtensions:
     @pytest.mark.parametrize(fixture_variables, fixture_values)
     def test_get_app_snippet(self, extension_name, extension_class, meta, meta_dev):
         python_paths = [
-            "$SNAP/opt/ros/jazzy/lib/python3.12/site-packages",
+            "$SNAP/opt/ros/lyrical/lib/python3.14/site-packages",
             "$SNAP/usr/lib/python3/dist-packages",
             "${PYTHONPATH}",
-            "$SNAP/opt/ros/underlay_ws/opt/ros/jazzy/lib/python3.12/site-packages",
+            "$SNAP/opt/ros/underlay_ws/opt/ros/lyrical/lib/python3.14/site-packages",
             "$SNAP/opt/ros/underlay_ws/usr/lib/python3/dist-packages",
         ]
         extension = setup_method_fixture(extension_class)
@@ -146,7 +146,7 @@ class TestExtensionROS2JazzyMetaExtensions:
             "command-chain": ["snap/command-chain/ros2-launch"],
             "environment": {
                 "ROS_VERSION": "2",
-                "ROS_DISTRO": "jazzy",
+                "ROS_DISTRO": "lyrical",
                 "PYTHONPATH": ":".join(python_paths),
                 "ROS_HOME": "$SNAP_USER_DATA/ros",
             },
@@ -156,7 +156,7 @@ class TestExtensionROS2JazzyMetaExtensions:
     def test_get_part_snippet(self, extension_name, extension_class, meta, meta_dev):
         extension = setup_method_fixture(extension_class)
         assert extension.get_part_snippet(plugin_name="colcon") == {
-            "build-environment": [{"ROS_VERSION": "2"}, {"ROS_DISTRO": "jazzy"}],
+            "build-environment": [{"ROS_VERSION": "2"}, {"ROS_DISTRO": "lyrical"}],
             "colcon-ros-build-snaps": [meta_dev],
             "colcon-cmake-args": [
                 f'-DCMAKE_SYSTEM_PREFIX_PATH="/snap/{meta_dev}/current/usr"'
@@ -164,7 +164,7 @@ class TestExtensionROS2JazzyMetaExtensions:
         }
 
         assert extension.get_part_snippet(plugin_name="cmake") == {
-            "build-environment": [{"ROS_VERSION": "2"}, {"ROS_DISTRO": "jazzy"}],
+            "build-environment": [{"ROS_VERSION": "2"}, {"ROS_DISTRO": "lyrical"}],
         }
 
     @pytest.mark.parametrize(fixture_variables, fixture_values)
@@ -175,17 +175,17 @@ class TestExtensionROS2JazzyMetaExtensions:
                 "source": f"{get_extensions_data_dir()}/ros2",
                 "plugin": "make",
                 "build-packages": [
-                    "ros-jazzy-ros-environment",
-                    "ros-jazzy-ros-workspace",
-                    "ros-jazzy-ament-index-cpp",
-                    "ros-jazzy-ament-index-python",
-                    "libpython3.12-dev",
+                    "ros-lyrical-ros-environment",
+                    "ros-lyrical-ros-workspace",
+                    "ros-lyrical-ament-index-cpp",
+                    "ros-lyrical-ament-index-python",
+                    "libpython3.14-dev",
                 ],
                 "stage-packages": [
-                    "ros-jazzy-ros-environment",
-                    "ros-jazzy-ros-workspace",
-                    "ros-jazzy-ament-index-cpp",
-                    "ros-jazzy-ament-index-python",
+                    "ros-lyrical-ros-environment",
+                    "ros-lyrical-ros-workspace",
+                    "ros-lyrical-ament-index-cpp",
+                    "ros-lyrical-ament-index-python",
                 ],
             }
         }

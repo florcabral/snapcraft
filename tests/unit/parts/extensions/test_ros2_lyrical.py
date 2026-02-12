@@ -98,7 +98,7 @@ class TestExtensionROS2LyricalExtension:
                             "usr/lib/*libicuio.so*",
                             "usr/lib/*libicutest.so*",
                             "usr/lib/*libicutu.so*",
-                            "usr/lib/*libpython3.10.so*",
+                            "usr/lib/*libpython3.14.so*",
                             "usr/lib/*libspdlog.so*",
                             "usr/lib/*libtinyxml2.so*",
                         ]
