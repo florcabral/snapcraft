@@ -1,6 +1,6 @@
 # -*- Mode:Python; indent-tabs-mode:nil; tab-width:4 -*-
 #
-# Copyright 2026 Canonical Ltd.
+# Copyright 2024 Canonical Ltd.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3 as
@@ -13,6 +13,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Import types and tell flake8 to ignore the "unused" List.
 
 """Base for ROS 2 Lyrical extensions to the Colcon plugin using content-sharing."""
 
@@ -104,7 +106,6 @@ class ROS2LyricalMetaBase(ROS2LyricalExtension):
 
         # Something in the ROS 2 build chain requires to find this lib during cmake call,
         # however its cmake files ship with the '-dev' package.
-        # TODO: Check if this is still needed in 26.04, the Python/CMake integration may have changed
         parts_snippet[f"ros2-{self.ROS_DISTRO}/ros2-launch"]["build-packages"].append(
             "libpython3.14-dev"
         )

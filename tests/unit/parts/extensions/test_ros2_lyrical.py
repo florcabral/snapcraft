@@ -1,6 +1,6 @@
 # -*- Mode:Python; indent-tabs-mode:nil; tab-width:4 -*-
 #
-# Copyright (C) 2026 Canonical Ltd
+# Copyright (C) 2024 Canonical Ltd
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3 as
@@ -58,7 +58,7 @@ class TestExtensionROS2LyricalExtension:
 
     def test_is_experimental(self, setup_method_fixture):
         extension = setup_method_fixture()
-        assert extension.is_experimental(None)
+        assert not extension.is_experimental(None)
 
     def test_get_supported_bases(self, setup_method_fixture):
         extension = setup_method_fixture()
@@ -98,7 +98,7 @@ class TestExtensionROS2LyricalExtension:
                             "usr/lib/*libicuio.so*",
                             "usr/lib/*libicutest.so*",
                             "usr/lib/*libicutu.so*",
-                            "usr/lib/*libpython3.14.so*",
+                            "usr/lib/*libpython3.10.so*",
                             "usr/lib/*libspdlog.so*",
                             "usr/lib/*libtinyxml2.so*",
                         ]
