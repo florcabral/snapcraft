@@ -82,7 +82,10 @@ class ROS2LyricalMetaBase(ROS2LyricalExtension):
 
         # These are colcon-plugin specific entries
         if plugin_name == "colcon":
-            part_snippet["colcon-ros-build-snaps"] = [self.ros2_lyrical_snaps.sdk]
+            # ROS Lyrical provider snaps are often published on edge only until stable
+            # exists; craft installs colcon-ros-build-snaps without a channel as stable.
+            sdk_snap = f"{self.ros2_lyrical_snaps.sdk}/edge"
+            part_snippet["colcon-ros-build-snaps"] = [sdk_snap]
             part_snippet["colcon-cmake-args"] = [
                 f'-DCMAKE_SYSTEM_PREFIX_PATH="/snap/{self.ros2_lyrical_snaps.sdk}/current/usr"'
             ]

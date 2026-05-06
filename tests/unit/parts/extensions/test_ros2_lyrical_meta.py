@@ -157,7 +157,7 @@ class TestExtensionROS2LyricalMetaExtensions:
         extension = setup_method_fixture(extension_class)
         assert extension.get_part_snippet(plugin_name="colcon") == {
             "build-environment": [{"ROS_VERSION": "2"}, {"ROS_DISTRO": "lyrical"}],
-            "colcon-ros-build-snaps": [meta_dev],
+            "colcon-ros-build-snaps": [f"{meta_dev}/edge"],
             "colcon-cmake-args": [
                 f'-DCMAKE_SYSTEM_PREFIX_PATH="/snap/{meta_dev}/current/usr"'
             ],
