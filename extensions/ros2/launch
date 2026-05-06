@@ -14,13 +14,26 @@ function source_with_prefix() {
 # Save off parameters, the sourced setup scripts may manipulate them.
 original_args=("$@")
 
-if [ -d "$SNAP/opt/ros/underlay_ws/opt/ros/$ROS_DISTRO" ]; then
-  source_with_prefix "$SNAP/opt/ros/underlay_ws/opt/ros/$ROS_DISTRO"
+UNDERLAY_DISTRO="$SNAP/opt/ros/underlay_ws/opt/ros/$ROS_DISTRO"
+UNDERLAY_SNAP_WS="$SNAP/opt/ros/underlay_ws/opt/ros/snap"
+
+# Prepend merged-install library dirs first so dlopen finds core ROS libs (e.g.
+# rclcpp) even if workspace setup scripts are picky about ordering.
+if [ -d "$UNDERLAY_DISTRO/lib" ]; then
+  export LD_LIBRARY_PATH="$UNDERLAY_DISTRO/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
-if [ -d "$SNAP/opt/ros/underlay_ws/opt/ros/snap" ]; then
-  source_with_prefix "$SNAP/opt/ros/underlay_ws/opt/ros/snap"
+if [ -d "$UNDERLAY_SNAP_WS/lib" ]; then
+  export LD_LIBRARY_PATH="$UNDERLAY_SNAP_WS/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
-if [ -d "$SNAP/opt/ros/underlay_ws/opt/ros/$ROS_DISTRO" ] || [ -d "$SNAP/opt/ros/underlay_ws/opt/ros/snap" ]; then
+
+if [ -f "$UNDERLAY_DISTRO/local_setup.bash" ]; then
+  source_with_prefix "$UNDERLAY_DISTRO"
+fi
+if [ -f "$UNDERLAY_SNAP_WS/local_setup.bash" ]; then
+  source_with_prefix "$UNDERLAY_SNAP_WS"
+fi
+
+if [ -f "$UNDERLAY_DISTRO/local_setup.bash" ] || [ -f "$UNDERLAY_SNAP_WS/local_setup.bash" ]; then
 
   case "$SNAP_ARCH" in
     "amd64") ARCH_TRIPLET='x86_64-linux-gnu'
@@ -37,6 +50,8 @@ if [ -d "$SNAP/opt/ros/underlay_ws/opt/ros/$ROS_DISTRO" ] || [ -d "$SNAP/opt/ros
 
   export PATH="$SNAP/opt/ros/underlay_ws/usr/bin:$PATH"
   export LD_LIBRARY_PATH="$SNAP/opt/ros/underlay_ws/usr/lib:$SNAP/opt/ros/underlay_ws/usr/lib/$ARCH_TRIPLET:$LD_LIBRARY_PATH"
+elif [ -d "$SNAP/opt/ros/underlay_ws" ] && [ ! -f "$UNDERLAY_DISTRO/local_setup.bash" ]; then
+  echo "ros2-launch: content mount $SNAP/opt/ros/underlay_ws missing local_setup.bash for ROS_DISTRO=$ROS_DISTRO (is the content plug connected?)" >&2
 fi
 
 source_with_prefix "$SNAP/opt/ros/$ROS_DISTRO"

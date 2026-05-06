@@ -50,7 +50,7 @@ class ROS2LyricalExtension(Extension):
             "package-repositories": [
                 {
                     "type": "apt",
-                    "url": "http://packages.ros.org/ros2/ubuntu",
+                    "url": "http://packages.ros.org/ros2-testing/ubuntu",
                     "components": ["main"],
                     "formats": ["deb"],
                     "key-id": "C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654",
@@ -122,6 +122,13 @@ class ROS2LyricalExtension(Extension):
                     f"ros-{self.ROS_DISTRO}-ros-workspace",
                     f"ros-{self.ROS_DISTRO}-ament-index-cpp",
                     f"ros-{self.ROS_DISTRO}-ament-index-python",
+                ],
+                "stage-packages": [
+                    "libpython3.14-minimal",
+                    "libpython3.14-stdlib",
+                    "python3-minimal",
+                    "python3.14-minimal",
+                    "python3.14-venv",
                 ],
             }
         }
